@@ -14,7 +14,7 @@ PokemonCard.propTypes = {
   
       name: PropTypes.string.isRequired,
   
-      imgSrc: PropTypes.string.isRequired,
+      imgSrc: PropTypes.string,
   
     }).isRequired,
   
