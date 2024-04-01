@@ -1,18 +1,24 @@
 import PropTypes from "prop-types";
 
-function Navbar({handleClickBackward, handleClickForward, pokemonList, pokemonIndex}) {
+function Navbar({pokemonList, setPokemonIndex}) {
+
+
+const handleClick = (index) => {
+    setPokemonIndex(index)
+}
 
 return (<>
-<div>{pokemonIndex > 0 ? <button onClick={handleClickBackward}>Précédent</button> : null}
-    {pokemonIndex < pokemonList.length - 1 ? <button onClick={handleClickForward}>Suivant</button> : null}</div>
+    {pokemonList.map((x, index) => (
+        <button key={x.name} onClick={() => handleClick(index)}>
+            {x.name}
+        </button>
+    ))}
 </>)
 }
 
 Navbar.propTypes = {
-    handleClickBackward: PropTypes.func.isRequired,
-    handleClickForward: PropTypes.func.isRequired,
     pokemonList: PropTypes.array.isRequired,
-    pokemonIndex: PropTypes.number.isRequired
+    setPokemonIndex: PropTypes.number.isRequired
 }
 
 export default Navbar
